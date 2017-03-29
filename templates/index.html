@@ -25,6 +25,32 @@
     Кравчук Олександр ІС-62<br />
     Блануца Дмитро ІП-61<br />
   </div>
+
+  <div class='popup'>
+    <form>
+      <span id='closer'>&#10007</span>
+      <h2>Невеличка анкетка</h2>
+      <p>Ви можете ввести інформацію про себе, тоді вас буде видно в таблиці результатів<br />
+        (Залиште ці текстові поля пустими, якщо хочете пройти тест анонімно)
+      </p>
+      <label for='text1'>Ім'я</label>
+      <input type='text' name='first-name' id='text1' placeholder="Ваше ім'я(необов'язково)"/>
+      <label for='text2'>Прізвище</label>
+      <input type='text' name='second-name' id='text2' placeholder="Ваше прізвище(необов'язково)"/>
+
+      <p>
+          Оберіть зручну для вас кількість тестів<br />
+          (чим більше тестів, тим точніше ви будете оцінені)
+      </p>
+      <input type='radio' name='test-length' value='12' id='radio1' checked="true"/><label for='radio1'>12 питань</label>
+      <input type='radio' name='test-length' value='18' id='radio2'/><label for='radio2'>18 питань</label>
+      <input type='radio' name='test-length' value='24' id='radio3'/><label for='radio3'>24 питань</label>
+      <input type='radio' name='test-length' value='30' id='radio4'/><label for='radio4'>30 питань</label>
+      <br />
+      <button>Розпочати тест</button>
+    </form>
+  </div>
+  <script src='{% static "js/indexJs.js"%}'></script>
 </body>
 
 </html>
