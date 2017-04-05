@@ -7,3 +7,7 @@ def index(request):
     response = render(request, "index.html")
 
     return response
+
+def testStarter(request):
+
+    return render(request, 'testsPage.html')
