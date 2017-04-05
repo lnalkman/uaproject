@@ -27,8 +27,8 @@ class Test(models.Model):
         result = 'NULL'
         choice = 'NULL'
         try:
-            result = answers[int(self.correctChoice)]
-            choice = choices[int(self.correctChoice)]
+            result = answers[self.correctChoice]
+            choice = choices[self.correctChoice]
         except IndexError:
             pass
 
