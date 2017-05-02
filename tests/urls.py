@@ -20,4 +20,5 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^$', views.index),
     url(r'^test$', views.testStarter),
+    url(r'^questions-generator$', views.qstGen),
 ]

@@ -16,7 +16,7 @@
 
   <div class='test-menu'>
     <div id='question'>
-      <h2>Питання номер % number %</h2>
+      <h2>Питання номер <span class='question-number'></span></h2>
       <hr />
       <div class='exercise'>
         <p>
@@ -24,23 +24,25 @@
         </p>
       </div>
       <div class='input-block'>
-        <input type='radio' name='answer' value='1' id='answer1'/><label for='answer1'>answer1</label>
+        <input type='radio' name='answer' value='0' id='answer1'/><label for='answer1'>answer1</label>
       </div>
       <div class='input-block'>
-        <input type='radio' name='answer' value='2' id='answer2'/><label for='answer2'>answer2</label>
+        <input type='radio' name='answer' value='1' id='answer2'/><label for='answer2'>answer2</label>
       </div>
       <div class='input-block'>
-        <input type='radio' name='answer' value='3' id='answer3'/><label for='answer3'>answer3</label>
+        <input type='radio' name='answer' value='2' id='answer3'/><label for='answer3'>answer3</label>
       </div>
       <div class='input-block'>
-      <input type='radio' name='answer' value='4' id='answer4'/><label for='answer4'>answer4</label>
+      <input type='radio' name='answer' value='3' id='answer4'/><label for='answer4'>answer4</label>
       </div>
       <button class='btn list-btn'>До списку питань</button>
       <button class='btn answ-btn'>Відповісти</button>
       <button class='btn pass-btn'>Пропустити</button>
     </div>
     <div id='question-list' style='display: none'>
-      <button class='btn list-btn'>До списку питань</button>
+      <h2>Список питань</h2>
+      <hr />
+      <button class='btn list-btn'>Повернутись до питання</button>
     </div>
   </div>
 
