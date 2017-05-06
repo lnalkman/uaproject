@@ -100,7 +100,7 @@ body {
   z-index: -1;
 }
 
-.popup>form {
+.popup>div {
   position: relative;
   width: 700px;
   margin: 0 auto;
@@ -159,4 +159,38 @@ body {
 
 .popup button:hover {
   background-color: #3ba0be;
+}
+
+.result-banner {
+  opacity: 0;
+  z-index: -1;
+  background-color: rgba(145, 255, 245, 0.9);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition-property: opacity;
+  transition-duration: 1s;
+}
+
+.result-info {
+  width: 700px;
+  /*border: 1px solid black;*/
+  margin: 250px auto;
+  /*text-align: center;*/
+  color: #333;
+}
+
+.result-info h1 {
+  text-align: center;
+}
+
+.answers {
+  width: 700px;
+  margin: 0 auto;
+}
+
+.answer-block {
+
 }

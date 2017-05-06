@@ -4,7 +4,8 @@
 
 <head>
 <title>Тести з української мови</title>
-<link rel='stylesheet' href='{% static "css/indexStyle.css" %}'
+<link rel='stylesheet' href='{% static "css/indexStyle.css" %}'>
+<link rel='stylesheet' href='{% static "css/tPageStyle.css" %}'>
 </head>
 <body>
   <div class='nav'>
@@ -27,7 +28,7 @@
   </div>
 
   <div class='popup'>
-    <form>
+    <div>
       <span id='closer'>&#10007</span>
       <h2>Невеличка анкетка</h2>
       <p>Ви можете ввести інформацію про себе, тоді вас буде видно в таблиці результатів<br />
@@ -48,9 +49,55 @@
       <input type='radio' name='test-length' value='30' id='radio4'/><label for='radio4'>30 питань</label>
       <br />
       <button>Розпочати тест</button>
-    </form>
+    </div>
   </div>
-  <script src='{% static "js/indexJs.js"%}'></script>
+  <div class='test-menu'>
+    <div id='question'>
+      <h2>Питання номер <span class='question-number'></span></h2>
+      <hr />
+      <div class='exercise'>
+        <p>
+          "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+        </p>
+      </div>
+      <div class='input-block'>
+        <input type='radio' name='answer' value='0' id='answer1'/><label for='answer1'>answer1</label>
+      </div>
+      <div class='input-block'>
+        <input type='radio' name='answer' value='1' id='answer2'/><label for='answer2'>answer2</label>
+      </div>
+      <div class='input-block'>
+        <input type='radio' name='answer' value='2' id='answer3'/><label for='answer3'>answer3</label>
+      </div>
+      <div class='input-block'>
+      <input type='radio' name='answer' value='3' id='answer4'/><label for='answer4'>answer4</label>
+      </div>
+      <button class='btn list-btn'>До списку питань</button>
+      <button class='btn answ-btn'>Відповісти</button>
+      <button class='btn pass-btn'>Пропустити</button>
+    </div>
+    <div id='question-list' style='display: none'>
+      <h2>Список питань</h2>
+      <hr />
+      <button class='btn list-btn'>Повернутись до питання</button>
+    </div>
+  </div>
+  <div class='result-banner'>
+    <div class='result-info'>
+      <h1>Результи тестування</h1>
+      <hr>
+      <p>Кількість питань: <span></span></p>
+      <p>Кількість правильних відповідей: <span></span></p>
+      <p>Кількість помилок: <span></span></p>
+      <p>Час проходження тесту: <span></span></p>
+      <h2>Результат у 100-бальній шкалі: <span></span></h2>
+    </div>
+    <div class='answers'>
+      Answers here
+    </div>
+  </div>
+
+  <script src='{% static "js/indexJs.js" %}'></script>
 </body>
 
 </html>

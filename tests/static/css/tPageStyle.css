@@ -54,9 +54,11 @@ body {
 }
 
 .test-menu {
+  display:none;
   width: 700px;
   padding: 20px 25px;
-  margin: 0 auto 0 auto;
+  /*margin: 0 auto 0 auto;*/
+  margin: 15vh auto;
   height: 375px;
   background-color: rgba(187, 232, 196, 0.9);
   border-radius: 4px;
