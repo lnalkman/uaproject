@@ -51,8 +51,10 @@ body {
   width: 800px;
   /*border: 1px solid black;*/
   text-align: center;
-  margin: 14vh auto;
+  margin: 200px auto;
   color: #edfcfc;
+  transition-property: margin, opacity;
+  transition-duration: 0.4s;
 }
 
 .banner button {
@@ -100,15 +102,19 @@ body {
   z-index: -1;
 }
 
-.popup>div {
+
+/*.popup>div {
   position: relative;
   width: 700px;
   margin: 0 auto;
   padding: 40px 0;
-  border: 6px double #8585f2;
-  background-color: rgba(167, 209, 233, 0.95);
+  /*border: 6px double #8585f2;*/
+  /*background-color: rgba(167, 209, 233, 0.95);*/
+  /*background-color: rgba(245, 245, 245, 0.8);*/
+  /*box-shadow: 0 0 20px #fff;*/
+  /*border-radius: 5px;*/
   color: #333;
-}
+}*/
 
 #closer {
   position: absolute;
@@ -141,14 +147,15 @@ body {
 
 #text1 {margin-right: 15px}
 
-.popup button {
+.popup button:first {
   margin-top: 25px;
+  margin: 25px 10px 0 10px;
   border-radius: 4px;
   background-color: #5bc0de;
   border: 1px solid #46b8da;
   color: #fff;
   font-size: 18px;
-  padding: 7px 14px;
+  padding: 7px 24px;
   line-height: 1.42857143;
   text-align: center;
   white-space: nowrap;
@@ -159,6 +166,15 @@ body {
 
 .popup button:hover {
   background-color: #3ba0be;
+}
+
+.buttons-block {
+  display: none;
+}
+
+.buttons-block button {
+  padding: 7px 22px;
+  margin: 15px 8px 0 8px;
 }
 
 .result-banner {
@@ -193,4 +209,9 @@ body {
 
 .answer-block {
 
+}
+
+.test-menu {
+  opacity: 0;
+  display: none;
 }

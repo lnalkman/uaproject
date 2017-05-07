@@ -122,8 +122,9 @@ input:hover, label:hover {
 
 .choose-question {
   float: left;
-  padding: 9px;
-  margin: 9px;
+  width: 39px;
+  height: 39px;
+  margin: 8px;
   border-radius: 3px;
   border: 1px solid #333;
   background-color: #fff;

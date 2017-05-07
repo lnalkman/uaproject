@@ -95,6 +95,7 @@ function TestingMachine(qstnumfield, qstfield, answfields, inanswf, qstlistblock
     xmlRequest.onerror = requestErrorHandler;
 
     xmlRequest.onload = function () {
+      console.log('Питання успішно отримано')
       questions = JSON.parse(this.responseText);
       setQuestion(activeQuestion);
       generateQuestList();
@@ -128,7 +129,7 @@ function TestingMachine(qstnumfield, qstfield, answfields, inanswf, qstlistblock
 
       questionListBlock.appendChild(btn);
     };
-
+    console.log('Список питань успішно згенеровано')
 
   };
 
@@ -239,10 +240,29 @@ function TestingMachine(qstnumfield, qstfield, answfields, inanswf, qstlistblock
   this.hideQuestionList = function () {
     questionListBlock.style.display = 'none';
     questionBlock.style.display = 'block';
-  }
+  };
+};
 
+function showTeststs() {
+  var testMenu = document.getElementsByClassName('test-menu')[0]
 
+  banner.style.marginTop = +banner.style.marginTop.slice(0, -2) - 15 + 'px';
+  banner.style.opacity = '0';
 
+  setTimeout(function() {
+    banner.style.display = 'none';
+
+    testMenu.style.transitionProperty = 'opacity';
+    testMenu.style.transitionDuration = '0.5s';
+
+    testMenu.style.display = 'block';
+    testMenu.style.opacity = '1';
+  }, bannerTransTime);
+
+  nextButton.onclick = tester.reply;
+  passButton.onclick = tester.pass;
+  listButton[0].onclick = tester.showQuestionList;
+  listButton[1].onclick = tester.hideQuestionList;
 };
 
 
@@ -264,29 +284,56 @@ var listButton = document.querySelectorAll('.list-btn');
 // listButton[1].onclick = tester.hideQuestionList;
 
 
+// TIMING
+var bannerTransTime = 400;
+
+
 var popupButton = document.querySelector('.banner button');
-var popupMenu = document.getElementsByClassName('popup')[0];
-var closePopup = document.getElementById('closer');
-var startBtn = document.querySelector('.popup button');
+// var popupMenu = document.getElementsByClassName('popup')[0];
+// var closePopup = document.getElementById('closer');
+var startBtn = document.querySelectorAll('.popup button')[0];
+var banner = document.getElementsByClassName('banner')[0];
+var buttonsBlock = document.getElementsByClassName('buttons-block')[0]
+
+var tester = new TestingMachine(qnf, qf, af, inanswf, qstlistblock, questionBlock);
+
+
+for (var btn in buttonsBlock.children) {
+  if (buttonsBlock.children[btn].nodeName == 'BUTTON') {
+    buttonsBlock.children[btn].onclick = function () {
+      tester.Constructor(+this.textContent);
+      showTeststs();
+    };
+  };
+};
 
 popupButton.onclick = function() {
-  popupMenu.style.opacity = 1;
-  popupMenu.style.zIndex = 1;
-}
+  var bannerStyle = getComputedStyle(banner);
 
-closePopup.onclick = function() {
-  popupMenu.style.opacity = -1;
-  popupMenu.style.zIndex = -1;
-}
+  // Здвигаємо елемент вниз і одночасно ховаємо його
+  banner.style.marginTop = +bannerStyle.marginTop.slice(0, -2) + 15 + 'px';
+  banner.style.opacity = '0';
 
-startBtn.onclick = function() {
-  var tester = new TestingMachine(qnf, qf, af, inanswf, qstlistblock, questionBlock);
-  tester.Constructor(24);
-  nextButton.onclick = tester.reply;
-  passButton.onclick = tester.pass;
-  listButton[0].onclick = tester.showQuestionList;
-  listButton[1].onclick = tester.hideQuestionList;
-  document.querySelector('.test-menu').style.display = 'block';
-  popupMenu.style.display = 'none';
-  document.querySelector('.banner').style.display = 'none';
-}
+  setTimeout(function() {
+    // Підставляємо новий текст у заголовок, ховаємо все не потрібне
+    document.querySelector('.banner h1').textContent = document.querySelector('.banner span').textContent
+    document.querySelector('.banner h4').style.display = 'none';
+    popupButton.style.display = 'none';
+
+    buttonsBlock.style.display = 'block';
+    banner.style.marginTop = +banner.style.marginTop.slice(0, -2) - 15 + 'px';
+    banner.style.opacity = '1';
+  }, bannerTransTime);
+};
+
+
+// startBtn.onclick = function() {
+//
+//   nextButton.onclick = tester.reply;
+//   passButton.onclick = tester.pass;
+//   listButton[0].onclick = tester.showQuestionList;
+//   listButton[1].onclick = tester.hideQuestionList;
+//   document.querySelector('.test-menu').style.display = 'block';
+//   popupMenu.style.display = 'none';
+//   document.querySelector('.banner').style.display = 'none';
+// }
