@@ -1,0 +1,47 @@
+
+body {
+  font-family: roboto, arial, sans-serif;
+  background-image: url('/static/img/indexbg.jpg');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  /*overflow: hidden;*/
+}
+
+.nav {
+  width: 100%;
+}
+
+.nav::after {
+  content: ' ';
+  clear: both;
+  height: 0;
+  display: block;
+  visibility: hidden;
+}
+
+.nav img {
+  height: auto;
+  margin: 5px 10px;
+  float: left;
+}
+.nav ul {
+  list-style: none;
+  margin-right: 10%;
+}
+
+.nav ul a {
+  float: right;
+  text-decoration: none;
+  color: #ddebff;
+  font-size: 18px;
+  font-weight: 400;
+  padding: 20px 10px;
+  margin: 0 15px;
+}
+
+.nav ul a:hover {
+  /*background-color: rgba(9, 199, 247, 0.5);*/
+  color: white;
+}
