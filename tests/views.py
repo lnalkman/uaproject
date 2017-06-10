@@ -40,3 +40,12 @@ def qstGen(request):
     # Mix questions, using random.shuffle()
     shuffle(questions)
     return JsonResponse(questions)
+
+
+def login_view(request): pass
+
+
+def register_view(request): pass
+
+
+def logout_view(request): pass
