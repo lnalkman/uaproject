@@ -1,26 +1,32 @@
+from random import shuffle
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
+from django.views.generic import ListView
 from .models import Test
-from django.views.decorators.csrf import csrf_exempt
 
-import random
 
-# Create your views here.
-# @csrf_exempt
+# Generate list with all test questions
+class QuestionList(ListView):
+    model = Test
+    context_object_name = 'test_list'
+    template_name = 'question-list.html'
+
+
 def index(request):
-    response = render(request, "index.html")
+    return render(request, "index.html")
 
-    return response
 
-def testStarter(request):
-
-    return render(request, 'testsPage.html')
-
-@csrf_exempt
 def qstGen(request):
+    """
+    Return mixed questions dictionary in Json format.
+
+    Get questions from Test model, puts them in questions dictionary
+    and mixing. Questions number gets from request and save in qstCount.
+    """
     qstCount = int(request.GET['qstCount'])
     questions = {}
     counter = 0
+
     for test in Test.objects.all()[:qstCount]:
         questions[counter] = {"qst": test.condition,
                               0: test.first,
@@ -31,5 +37,6 @@ def qstGen(request):
                                }
         counter += 1
 
-    random.shuffle(questions)
+    # Mix questions, using random.shuffle()
+    shuffle(questions)
     return JsonResponse(questions)
