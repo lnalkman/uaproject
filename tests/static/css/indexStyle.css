@@ -1,57 +1,8 @@
 
-body {
-  font-family: roboto, arial, sans-serif;
-  background-image: url('/static/img/indexbg.jpg');
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.nav {
-  width: 100%;
-}
-
-.nav::after {
-  content: ' ';
-  clear: both;
-  height: 0;
-  display: block;
-  visibility: hidden;
-}
-
-.nav img {
-  /*width: 100px;*/
-  height: auto;
-  margin: 5px 10px;
-  float: left;
-}
-.nav ul {
-  list-style: none;
-  margin-right: 10%;
-}
-
-.nav ul a {
-  float: right;
-  text-decoration: none;
-  color: #ddebff;
-  font-size: 18px;
-  font-weight: 200;
-  padding: 20px 10px;
-  margin: 0 15px;
-}
-
-.nav ul a:hover {
-  /*background-color: rgba(9, 199, 247, 0.5);*/
-  color: white;
-}
-
 .banner {
   width: 800px;
-  /*border: 1px solid black;*/
   text-align: center;
-  margin: 200px auto;
+  margin: 160px auto;
   color: #edfcfc;
   transition-property: margin, opacity;
   transition-duration: 0.4s;
@@ -59,8 +10,6 @@ body {
 
 .banner button {
   margin-top: 30px;
-  /*width: 150px;
-  height: 50px;*/
   border-radius: 4px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -79,17 +28,6 @@ body {
   background-color: #ccc;
 }
 
-/*.banner:active {
-  box-shadow
-}*/
-
-.info {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  font-size: 11px;
-}
-
 .popup {
   width: 100%;
   text-align: center;
@@ -101,20 +39,6 @@ body {
   opacity: 0;
   z-index: -1;
 }
-
-
-/*.popup>div {
-  position: relative;
-  width: 700px;
-  margin: 0 auto;
-  padding: 40px 0;
-  /*border: 6px double #8585f2;*/
-  /*background-color: rgba(167, 209, 233, 0.95);*/
-  /*background-color: rgba(245, 245, 245, 0.8);*/
-  /*box-shadow: 0 0 20px #fff;*/
-  /*border-radius: 5px;*/
-  color: #333;
-}*/
 
 #closer {
   position: absolute;
@@ -205,10 +129,6 @@ body {
 .answers {
   width: 700px;
   margin: 0 auto;
-}
-
-.answer-block {
-
 }
 
 .test-menu {

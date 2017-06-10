@@ -1,23 +1,16 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block title %}Тести з української мови{% endblock %}
 
-<head>
-<title>Тести з української мови</title>
+{% block styles %}
 <link rel='stylesheet' href='{% static "css/indexStyle.css" %}'>
 <link rel='stylesheet' href='{% static "css/tPageStyle.css" %}'>
-</head>
-<body>
-  <div class='nav'>
-    <img src='{% static "img/books-stack-of-three.png" %}' />
-    <ul>
-      <li><a href='#'>Результати</a></li>
-      <li><a href='#'>Головна</a></li>
-    </ul>
-  </div>
+{% endblock %}
+
+{% block content %}
   <div class='banner'>
     <h1 class='main-text'>Оцініть свої знання з української мови</h1>
-    <h4>Ви можете обрати зручну кількість питань та зберегти результати</h4>
+    <h4>Ви можете обрати зручну кількість питань та проходити їх у будь-якому порядку</h4>
     <button>Пройти тест</button>
     <span style='display: none'>Оберіть бажану кількість питань</span>
     <div class='buttons-block'>
@@ -31,39 +24,8 @@
       <button>40</button><br>
       <button>50</button>
     </div>
-
-  </div>
-  <div class='info'>
-    Тести та сайт зроблено:<br />
-    Кравчук Олександр ІС-62<br />
-    Блануца Дмитро ІП-61<br />
   </div>
 
-  <!-- <div class='popup'>
-
-     <div>
-      <span id='closer'>&#10007</span>
-      <h2>Невеличка анкетка</h2>
-      <p>Ви можете ввести інформацію про себе, тоді вас буде видно в таблиці результатів<br />
-        (Залиште ці текстові поля пустими, якщо хочете пройти тест анонімно)
-      </p>
-      <label for='text1'>Ім'я</label>
-      <input type='text' name='first-name' id='text1' placeholder="Ваше ім'я(необов'язково)"/>
-      <label for='text2'>Прізвище</label>
-      <input type='text' name='second-name' id='text2' placeholder="Ваше прізвище(необов'язково)"/>
-
-      <p>
-          Оберіть зручну для вас кількість тестів<br />
-          (чим більше тестів, тим точніше ви будете оцінені)
-      </p>
-      <input type='radio' name='test-length' value='12' id='radio1' checked="true"/><label for='radio1'>12 питань</label>
-      <input type='radio' name='test-length' value='18' id='radio2'/><label for='radio2'>18 питань</label>
-      <input type='radio' name='test-length' value='24' id='radio3'/><label for='radio3'>24 питаня</label>
-      <input type='radio' name='test-length' value='30' id='radio4'/><label for='radio4'>30 питань</label>
-      <br />
-      <button>Розпочати тест</button>
-    </div>
-  </div> -->
   <div class='test-menu'>
     <div id='question'>
       <h2>Питання номер <span class='question-number'></span></h2>
@@ -105,12 +67,10 @@
       <p>Час проходження тесту: <span></span></p>
       <h2>Результат у 100-бальній шкалі: <span></span></h2>
     </div>
-    <div class='answers'>
-      Answers here
-    </div>
+
+    <div class='answers'></div>
   </div>
 
-  <script src='{% static "js/indexJs.js" %}'></script>
-</body>
 
-</html>
+  <script src='{% static "js/indexJs.js" %}'></script>
+{% endblock %}
