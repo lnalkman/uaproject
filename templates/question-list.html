@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}Список тестів{% endblock %}
+
+{% block styles %}
+  <link rel='stylesheet' href='{% static "css/question-list.css" %}'>
+{% endblock %}
+
+{% block content %}
+  <h2 class='head'>Усього {{ test_list|length }} питань</h2>
+  {% for test in test_list %}
+    <div class='question-block'>
+      <h4>Питання {{ forloop.counter }}</h4>
+      <p>{{ test.condition }}</p>
+
+      <span class='answer'>{{ test.first }}</span>
+      <span class='answer'>{{ test.second }}</span>
+      <span class='answer'>{{ test.third }}</span>
+      <span class='answer'>{{ test.fourth }}</span>
+    </div>
+    {% empty %}
+      <div class='question-block not-found'>
+        <h1>Список питань не знайдено</h1>
+      </div>
+  {% endfor %}
+{% endblock %}
