@@ -7,6 +7,8 @@ body {
   background-size: cover;
   background-attachment: fixed;
   /*overflow: hidden;*/
+  padding: 0;
+  margin: 0;
 }
 
 .nav {
@@ -44,4 +46,25 @@ body {
 .nav ul a:hover {
   /*background-color: rgba(9, 199, 247, 0.5);*/
   color: white;
+}
+
+.user-block {
+  /*padding: 10px 5px;*/
+  background-color: rgba(0, 165, 255, 0.1);
+}
+
+.user-block span {
+  display: inline-block;
+  padding: 10px 10px;
+}
+
+.user-makes {
+  padding: 10px 10px;
+  float: right;
+  text-decoration: none;
+  color: #500060;
+}
+
+.user-makes:hover {
+  background-color: #ddd;
 }
