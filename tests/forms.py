@@ -14,10 +14,10 @@ class AuthForm(forms.Form):
 
 class RegistrationForm(forms.ModelForm):
     """Basic registration form."""
-    password = forms.CharField(label='Пароль',
-                               widget=forms.PasswordInput(),
-                               max_length=128
-                               )
+    # password = forms.CharField(label='Пароль',
+    #                            widget=forms.PasswordInput(),
+    #                            max_length=128
+    #                            )
     password2 = forms.CharField(label='Повторіть пароль',
                                widget=forms.PasswordInput(),
                                max_length=128
@@ -25,7 +25,19 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['email', 'username']
+        fields = ['email', 'username', 'password']
+
+
+    def __init__(self, *args, **kwargs):
+        base_init = super(forms.ModelForm, self).__init__(*args, **kwargs)
+
+        # Bad localization
+        self.fields['password'].widget = forms.PasswordInput()
+        self.fields['password'].label = 'Пароль'                                            
+        self.fields['email'].label = 'Емейл'
+        self.fields['username'].label = 'Логін'
+
+        return base_init
 
 
     def is_valid(self):

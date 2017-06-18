@@ -54,6 +54,8 @@ class UserRegistration(CreateView):
     success_url = r'/'
 
     def form_valid(self, form):
+        # Set hashed password for new user
+        form.instance.set_password(form.cleaned_data['password'])
         messages.add_message(self.request, messages.SUCCESS, 'Success Registration')
 
         return super(CreateView, self).form_valid(form)
