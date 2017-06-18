@@ -19,7 +19,7 @@
       {{ form.password.label_tag }}</br>
       {{ form.password }}
       {{ form.username.errors }}
-      <button class='btn'>Увійти</button>
+      <button class='btn'>Увійти</button><a href="{% url 'registration' %}">Ще не маєте акаунту ?</a>
       {{ form.non_field_errors }}
     </div>
   </form>

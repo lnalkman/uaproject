@@ -1,9 +1,10 @@
 #auth-form {
   width: 320px;
   margin: 100px auto;
-  border: 5px double #94F5E4;
-  padding: 15px 30px;
-  background-color: rgba(33, 255, 239, 0.68);
+  /*border: 5px double #94F5E4;*/
+  padding: 20px 30px;
+  background-color: rgba(230, 230, 255, 0.4);
+  border-radius: 4px;
 }
 
 .input-block {
@@ -43,4 +44,15 @@
 
 .btn:hover {
   background-color: #ccc;
+}
+
+#auth-form .btn + a {
+  float: right;
+  margin-top: 20px;
+  text-decoration: none;
+}
+
+#auth-form .btn + a:hover {
+  color: aqua;
+  text-decoration: underline;
 }

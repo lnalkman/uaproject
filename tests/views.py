@@ -1,13 +1,14 @@
 from random import shuffle
 from django.shortcuts import render
 from django.http import JsonResponse, HttpResponseRedirect
-from django.views.generic import ListView
-from django.contrib.auth import authenticate, login
+from django.views.generic import ListView, CreateView
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.urls import reverse
 # Since django 1.10: from django.core.urlresolver import reverse
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
 from .models import Test
-from .forms import AuthForm
+from .forms import AuthForm, RegistrationForm
 
 
 # Generate list with all test questions
@@ -17,19 +18,7 @@ class QuestionList(ListView):
     template_name = 'question-list.html'
 
 
-def index(request, message=None):
-    """
-    Index views, can show different messages using message which gived by
-    message variable.
-
-    Variable message must be function which takes request and add message.
-    """
-    if message:
-        try:
-            message(request)
-        # In future: add exception data in database.
-        except: pass
-
+def index(request):
     return render(request, "index.html")
 
 
@@ -51,7 +40,7 @@ def qstGen(request):
                               2: test.third,
                               3: test.fourth,
                               'answ': test.correctChoice,
-                               }
+                              }
         counter += 1
 
     # Mix questions, using random.shuffle()
@@ -59,7 +48,21 @@ def qstGen(request):
     return JsonResponse(questions)
 
 
+class UserRegistration(CreateView):
+    form_class = RegistrationForm
+    template_name = 'registration.html'
+    success_url = r'/'
+
+    def form_valid(self, form):
+        messages.add_message(self.request, messages.SUCCESS, 'Success Registration')
+
+        return super(CreateView, self).form_valid(form)
+
+
 def login_view(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('index'))
+
     if request.method == 'POST':
         form = AuthForm(request.POST)
 
@@ -69,6 +72,7 @@ def login_view(request):
                                 )
             if user:
                 login(request, user)
+                messages.add_message(request, messages.SUCCESS, 'success login')
                 return HttpResponseRedirect(reverse('index'))
             else:
                 form.add_error(None, "Невірне ім'я користувача або пароль.")
@@ -78,7 +82,9 @@ def login_view(request):
 
     return render(request, 'auth.html', context={'form': form})
 
-def register_view(request): pass
 
-
-def logout_view(request): pass
+def logout_view(request):
+    if request.user.is_authenticated:
+        logout(request)
+        messages.add_message(request, messages.INFO, 'success exit')
+    return HttpResponseRedirect(reverse('index'))

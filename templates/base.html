@@ -10,10 +10,10 @@
   {% endblock %}
 </head>
 <body>
-  {% if user %}
+  {% if user.is_authenticated %}
     <div class='user-block'>
       <span>Ви увійшли в систему як <b>{{ user }}</b></span>
-      <a class="user-makes" href='#'>Вийти з профілю</a>
+      <a class="user-makes" href='{% url "logout" %}'>Вийти з профілю</a>
       <a class="user-makes" href='#'>Додати питання</a>
     </div>
   {% endif %}
@@ -21,7 +21,7 @@
     <img src='{% static "img/books-stack-of-three.png" %}' />
     <ul>
       {% block navigation %}
-        {% if not user %}
+        {% if not user.is_authenticated %}
           <li><a href='{% url "authenticate" %}'>Увійти</a></li>
         {% endif %}
         <li><a href='{% url "question-list" %}'>Список питань</a></li>
