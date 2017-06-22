@@ -4,8 +4,10 @@
 
 <head>
   <meta charset='utf-8'>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>{% block title %}Тести з української мови{% endblock %}</title>
   <link rel='stylesheet' href='{% static "css/base.css" %}'>
+  <link rel='stylesheet' href='{% static "bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" %}'>
   {% block styles %}
   {% endblock %}
 </head>
@@ -18,25 +20,39 @@
     </div>
   {% endif %}
   <div class='nav'>
-    <img src='{% static "img/books-stack-of-three.png" %}' />
-    <ul>
+    <!-- <img src='{% static "img/books-stack-of-three.png" %}' />-->
       {% block navigation %}
-        {% if not user.is_authenticated %}
-          <li><a href='{% url "authenticate" %}'>Увійти</a></li>
-        {% endif %}
-        <li><a href='{% url "question-list" %}'>Список питань</a></li>
-        <li><a href='{% url "index" %}'>Головна</a></li>
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+            <a class="nav-link" href='{% url "index" %}'>Головна</a></li>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href='{% url "question-list" %}'>Список питань</a>
+          </li>
+          {% if not user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href='{% url "authenticate" %}'>Увійти</a>
+            </li>
+          {% endif %}
+        </ul>
       {% endblock %}
-    </ul>
   </div>
   {% block content %}
   {% endblock %}
 {% if messages %}
-  <ul class="messages">
+  <div class="col-3 messages">
     {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>{{ message }}</strong>
+      </div>
     {% endfor %}
-  </ul>
+  </div>
 {% endif %}
+<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src='{% static "bootstrap-4.0.0-alpha.6-dist/js/bootstrap.min.js" %}'></script>
 </body>
 </html>

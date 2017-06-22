@@ -68,3 +68,9 @@ body {
 .user-makes:hover {
   background-color: #ddd;
 }
+
+div.messages {
+  position: fixed;
+  left: 20px;
+  bottom: 10px;
+}

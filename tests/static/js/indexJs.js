@@ -277,20 +277,11 @@ var qstlistblock = document.querySelector('#question-list');
 var questionBlock = document.querySelector('#question');
 var listButton = document.querySelectorAll('.list-btn');
 
-// var tester = new TestingMachine(qnf, qf, af, inanswf, qstlistblock, questionBlock);
-// nextButton.onclick = tester.reply;
-// passButton.onclick = tester.pass;
-// listButton[0].onclick = tester.showQuestionList;
-// listButton[1].onclick = tester.hideQuestionList;
-
-
 // TIMING
 var bannerTransTime = 400;
 
 
 var popupButton = document.querySelector('.banner button');
-// var popupMenu = document.getElementsByClassName('popup')[0];
-// var closePopup = document.getElementById('closer');
 var startBtn = document.querySelectorAll('.popup button')[0];
 var banner = document.getElementsByClassName('banner')[0];
 var buttonsBlock = document.getElementsByClassName('buttons-block')[0]
@@ -309,6 +300,7 @@ for (var btn in buttonsBlock.children) {
 
 popupButton.onclick = function() {
   var bannerStyle = getComputedStyle(banner);
+  $('.alert').alert('close');
 
   // Здвигаємо елемент вниз і одночасно ховаємо його
   banner.style.marginTop = +bannerStyle.marginTop.slice(0, -2) + 15 + 'px';
@@ -325,15 +317,3 @@ popupButton.onclick = function() {
     banner.style.opacity = '1';
   }, bannerTransTime);
 };
-
-
-// startBtn.onclick = function() {
-//
-//   nextButton.onclick = tester.reply;
-//   passButton.onclick = tester.pass;
-//   listButton[0].onclick = tester.showQuestionList;
-//   listButton[1].onclick = tester.hideQuestionList;
-//   document.querySelector('.test-menu').style.display = 'block';
-//   popupMenu.style.display = 'none';
-//   document.querySelector('.banner').style.display = 'none';
-// }
