@@ -10,10 +10,20 @@
   {% endblock %}
 </head>
 <body>
+  {% if user.is_authenticated %}
+    <div class='user-block'>
+      <span>Ви увійшли в систему як <b>{{ user }}</b></span>
+      <a class="user-makes" href='{% url "logout" %}'>Вийти з профілю</a>
+      <a class="user-makes" href='#'>Додати питання</a>
+    </div>
+  {% endif %}
   <div class='nav'>
     <img src='{% static "img/books-stack-of-three.png" %}' />
     <ul>
       {% block navigation %}
+        {% if not user.is_authenticated %}
+          <li><a href='{% url "authenticate" %}'>Увійти</a></li>
+        {% endif %}
         <li><a href='{% url "question-list" %}'>Список питань</a></li>
         <li><a href='{% url "index" %}'>Головна</a></li>
       {% endblock %}
@@ -21,5 +31,12 @@
   </div>
   {% block content %}
   {% endblock %}
+{% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
 </body>
 </html>

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+<!-- Auth here in future -->
+
+{% block title %}Авторизація{% endblock %}
+
+{% block styles %}
+  <link rel='stylesheet' href='{% static "css/auth.css" %}'>
+{% endblock %}
+
+{% block content %}
+  <form method="POST" action='{% url "authenticate" %}' id='auth-form'>{% csrf_token %}
+    <div class="input-block">
+      {{ form.username.label_tag }}</br>
+      {{ form.username }}
+      {{ form.username.errors }}
+    </div>
+    <div class="input-block">
+      {{ form.password.label_tag }}</br>
+      {{ form.password }}
+      {{ form.username.errors }}
+      <button class='btn'>Увійти</button><a href="{% url 'registration' %}">Ще не маєте акаунту ?</a>
+      {{ form.non_field_errors }}
+    </div>
+  </form>
+{% endblock %}
